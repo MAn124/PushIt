@@ -1,16 +1,16 @@
 using UnityEngine;
 
-    public class BarrelSpawner : Spawner<Barrel>
+    public class BarrelSpawner : Spawner<BarrelCtrl>
     {
-      public virtual Barrel Spawn(Barrel prefabs)
+      public virtual BarrelCtrl Spawn(BarrelCtrl prefabs)
         {
-            Barrel newObj = Instantiate(prefabs);
+            BarrelCtrl newObj = Instantiate(prefabs);
             newObj.Despawn.SetSpawner(this);  
             return newObj;
         }
-        public virtual Barrel Spawn(Barrel prefabs, Vector3 position)
+        public virtual BarrelCtrl Spawn(BarrelCtrl prefabs, Vector3 position)
         {
-            Barrel newObj = this.Spawn  (prefabs);
+            BarrelCtrl newObj = this.Spawn  (prefabs);
             newObj.transform.position = position;
             return newObj;
         }

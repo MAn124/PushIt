@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class Barrel : BaseMonoBehaviour
+public class BarrelCtrl : BaseMonoBehaviour
 {
     [SerializeField] protected BarrelDespawn despawn;
     public BarrelDespawn Despawn => despawn;
+
+   
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -14,4 +16,5 @@ public class Barrel : BaseMonoBehaviour
         if (this.despawn != null) return;
         this.despawn = transform.GetComponentInChildren<BarrelDespawn>();
     }
+   
 }

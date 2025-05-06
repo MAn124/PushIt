@@ -24,6 +24,5 @@ public abstract class Spawner<T> : BaseMonoBehaviour
     }
     protected virtual void AddObjToPool(T obj) {
         this.inPoolObj.Add(obj);
-
     }
 }
