@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Despawn<T> : BaseMonoBehaviour
+public abstract class Despawn<T> : DespawnBase where T :PoolObj
 {
     [SerializeField] protected Spawner<T> spawner;
     [SerializeField] protected T parent;
@@ -12,6 +12,7 @@ public abstract class Despawn<T> : BaseMonoBehaviour
     {
         base.LoadComponent();
         this.LoadParent();
+        this.LoadSpawner();
     }
     protected virtual void LoadParent()
     {
@@ -22,8 +23,9 @@ public abstract class Despawn<T> : BaseMonoBehaviour
     {
         this.spawner.Despawn(this.parent);
     }
-    public virtual void SetSpawner(Spawner<T> spawner)
+    protected virtual void LoadSpawner()
     {
-        this.spawner = spawner;
+        if (this.spawner != null) return;
+        this.spawner =GameObject.FindAnyObjectByType<Spawner<T>>();
     }
 }

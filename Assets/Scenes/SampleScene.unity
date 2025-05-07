@@ -952,6 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleManagerCtrl: {fileID: 1461950839}
+  spawner: {fileID: 275225664}
+  barrelCtrl: {fileID: 5496002041332777533}
 --- !u!1 &679287735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,7 +3675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9daf47ce02132047a845602994690e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
+  spawner: {fileID: 275225664}
   parent: {fileID: 5496002041332777533}
 --- !u!1 &7422743200261646606
 GameObject:

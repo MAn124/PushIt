@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class ObstacleCtrl : MonoBehaviour
+public abstract class ObstacleCtrl : PoolObj
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected Transform model;
+    protected override void LoadComponent()
     {
-        
+        base.LoadComponent();
+        this.LoadModel();
     }
-
-    // Update is called once per frame
-    void Update()
+    protected virtual void LoadModel()
     {
-        
+        if (this.model != null) return;
+        this.model = transform.Find("Model");
     }
 }
