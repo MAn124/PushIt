@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BarrelCtrl : PoolObj
+public class BarrelCtrl : ObstacleCtrl
 {
 
 }

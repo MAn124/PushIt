@@ -5,11 +5,7 @@ using UnityEngine;
 public abstract class Spawner<T> : BaseMonoBehaviour where T : PoolObj
 {
     [SerializeField] protected List<T> inPoolObj;
-    public virtual Transform Spawn(Transform prefab)
-    {
-        Transform newObj = Instantiate(prefab);
-        return newObj;  
-    }
+   
     public virtual T Spawn(T prefabs)
     {
         T newObj = this.GetObjFromPool(prefabs);

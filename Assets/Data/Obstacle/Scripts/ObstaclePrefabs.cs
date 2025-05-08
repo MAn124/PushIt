@@ -1,39 +1,36 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstaclePrefabs : ObstacleManagerAbstract
 {
-    [SerializeField] protected BarrelSpawner spawner;
-    [SerializeField] protected BarrelCtrl barrelCtrl;
-
+    [SerializeField] protected List<ObstacleCtrl> obstacles = new();
     protected void Start()
     {
         this.HidePrefabs();
-        Invoke(nameof(this.SpawnBarrel), 2f);
+
     }
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadSpawner();
-        this.LoadBarrel();
+        this.LoadPrefabs();
     }
-    protected virtual void LoadSpawner()
+    protected virtual void LoadPrefabs()
     {
-        if (this.spawner != null) return;
-        this.spawner = FindAnyObjectByType<BarrelSpawner>();
-    }
-    protected virtual void LoadBarrel()
-    {
-        if (this.barrelCtrl != null) return;
-        this.barrelCtrl = GetComponentInChildren<BarrelCtrl>();
-    }
-    protected virtual void SpawnBarrel()
-    {
-        Invoke(nameof(this.SpawnBarrel), 2f);
-
-        this.spawner.Spawn(this.barrelCtrl);
+        if (this.obstacles.Count > 0) return;
+        foreach(Transform child in transform)
+        {
+            ObstacleCtrl obstacleCtrl = child.GetComponent<ObstacleCtrl>();
+            if(obstacleCtrl) this.obstacles.Add(obstacleCtrl);
+        }
+        
     }
     protected virtual void HidePrefabs()
     {
-        this.barrelCtrl.gameObject.SetActive(false);
+        foreach(ObstacleCtrl obstacleCtrl in this.obstacles)
+        {
+         
+            obstacleCtrl.gameObject.SetActive(false);
+        }
     }
 }

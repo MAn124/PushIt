@@ -1,16 +1,26 @@
 using UnityEngine;
 
-public class ObstacleManagerCtrl : MonoBehaviour
+public class ObstacleManagerCtrl : BaseMonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected ObstaclePrefabs obstaclePrefabs;
+    [SerializeField] protected ObstacleSpawner obstacleSpawner;
 
-    // Update is called once per frame
-    void Update()
+    public ObstaclePrefabs ObstaclePrefabs => obstaclePrefabs;
+    public ObstacleSpawner ObstacleSpawner => obstacleSpawner;
+    protected override void LoadComponent()
     {
-        
+        base.LoadComponent();
+        this.LoadPrefabs();
+        this.LoadSpawner();
+    }
+    protected virtual void LoadPrefabs()
+    {
+        if (this.obstaclePrefabs != null) return;
+        this.obstaclePrefabs = GetComponentInChildren<ObstaclePrefabs>();
+    }
+    protected virtual void LoadSpawner()
+    {
+        if (this.obstacleSpawner != null) return;
+        this.obstacleSpawner = GetComponentInChildren<ObstacleSpawner>();
     }
 }

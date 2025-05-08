@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class ObstacleCtrl : PoolObj
 {
     [SerializeField] protected Transform model;
+    
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -13,4 +14,5 @@ public abstract class ObstacleCtrl : PoolObj
         if (this.model != null) return;
         this.model = transform.Find("Model");
     }
+ 
 }
