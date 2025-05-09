@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public abstract class ObstacleCtrl : PoolObj
 {
     [SerializeField] protected Transform model;

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ObstacleSpawning : ObstacleManagerAbstract
 {
-    [SerializeField] protected int SpawnNumber = 10;
-    protected List<ObstacleCtrl> obstacleSpawn = new();
+    [SerializeField] protected List<ObstacleSpawnData> spawnData;
+   
 
     protected void Start()
     {
         this.Spawning();
     }
+  
     protected virtual void Spawning()
     {
-        Debug.Log("Spawning");
+      
     }
 }
