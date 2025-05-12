@@ -302,7 +302,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1786706429}
   m_Father: {fileID: 1461950838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &218049710
@@ -645,6 +646,68 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &414166080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414166081}
+  m_Layer: 0
+  m_Name: Point_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414166081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414166080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49, y: 6.6, z: -16.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786706429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &423817526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423817527}
+  m_Layer: 0
+  m_Name: Point_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423817527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423817526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.4, y: 7.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786706429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &471344936
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a55a05d983cfa4abf7a8854fa616e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDespawn: 0
   inPoolObj: []
 --- !u!4 &558555987
 Transform:
@@ -1171,6 +1235,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &988822435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988822436}
+  m_Layer: 0
+  m_Name: Point_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988822436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988822435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 52.5, y: 8.4, z: 14.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786706429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1022604541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 123466243023093449, guid: 42771c6a3de952143a3ef71c24beeff9, type: 3}
@@ -1230,7 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs: {fileID: 642279528}
-  obstacleSpawner: {fileID: 0}
+  obstacleSpawner: {fileID: 558555986}
 --- !u!1 &1599535877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,8 +1405,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleManagerCtrl: {fileID: 1461950839}
-  spawnData: {fileID: 11400000, guid: 99bcd8a69ecedb34d9065161d708da8d, type: 2}
-  SpawnNumber: 10
+  barrelCtrl: {fileID: 8173020670120356911, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
+  barrelSpawnPoints:
+  - {fileID: 423817527}
+  - {fileID: 414166081}
+  - {fileID: 988822436}
+  woodStickCtrl: {fileID: 0}
+  rockSpawnPoints: []
+  spikeTrapCtrl: {fileID: 0}
+  boxSpawnPoints: []
+--- !u!1 &1786706428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786706429}
+  m_Layer: 0
+  m_Name: BarrelSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786706429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786706428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 423817527}
+  - {fileID: 414166081}
+  - {fileID: 988822436}
+  m_Father: {fileID: 137841295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793729464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3456,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3524934739391704844, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.08
       objectReference: {fileID: 0}
     - target: {fileID: 3524934739391704844, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3366,6 +3502,10 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 558555986}
+    - target: {fileID: 8907367483542131169, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
+      propertyPath: obstacleManagerCtrl
+      value: 
+      objectReference: {fileID: 1461950839}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
