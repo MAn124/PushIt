@@ -10,21 +10,26 @@ public class ObstacleSpawning : ObstacleManagerAbstract
 
     [Header("WoodStick")]
     [SerializeField] private WoodStickCtrl woodStickCtrl;
-    [SerializeField] private List<Transform> rockSpawnPoints;
+    [SerializeField] private List<Transform> woodStickSpawnPoints;
 
     [Header("SpikeTrap")]
     [SerializeField] private SpikeTrapCtrl spikeTrapCtrl;
-    [SerializeField] private List<Transform> boxSpawnPoints;
+    [SerializeField] private List<Transform> spikeTrapSpawnPoints;
     protected void Start()
     {
         this.Spawning();
     }
-  
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+      
+    }
+   
     protected virtual void Spawning()
     {
         SpawnGroup(barrelCtrl, barrelSpawnPoints);
-        SpawnGroup(woodStickCtrl, rockSpawnPoints);
-        SpawnGroup(spikeTrapCtrl, boxSpawnPoints);
+        SpawnGroup(woodStickCtrl, woodStickSpawnPoints);
+        SpawnGroup(spikeTrapCtrl, spikeTrapSpawnPoints);
     }
     protected virtual void SpawnGroup(ObstacleCtrl prefab,List<Transform> points)
     {
