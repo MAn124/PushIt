@@ -5,7 +5,6 @@ using UnityEngine;
 
 public abstract class Spawner<T> : BaseMonoBehaviour where T : PoolObj
 {
-    [SerializeField] protected bool isDespawn = false;
     [SerializeField] protected List<T> inPoolObj;
    
     public virtual T Spawn(T prefabs)
@@ -44,7 +43,6 @@ public abstract class Spawner<T> : BaseMonoBehaviour where T : PoolObj
     }
     public virtual void Despawn(T obj)
     {
-        if (!isDespawn) return;
         if(obj is MonoBehaviour mono)
         {
           mono.gameObject.SetActive(false);

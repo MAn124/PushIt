@@ -833,7 +833,7 @@ Transform:
   m_GameObject: {fileID: 423817526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66, y: 8, z: -0.8}
+  m_LocalPosition: {x: 7.4, y: 8, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -915,7 +915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a55a05d983cfa4abf7a8854fa616e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDespawn: 0
   inPoolObj: []
 --- !u!4 &558555987
 Transform:
@@ -1218,7 +1217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCtrl: {fileID: 939567370}
   isMoving: 0
-  moveSpeed: 5
+  moveSpeed: 3
   pushMoveSpeed: 2.5
 --- !u!4 &679287737
 Transform:
@@ -1588,6 +1587,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &985373493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985373495}
+  - component: {fileID: 985373494}
+  m_Layer: 0
+  m_Name: EffectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &985373494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985373493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feae0a0f01e74145a1947b54c8b77fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPoolObj: []
+--- !u!4 &985373495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985373493}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1005589594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988822435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005589594}
+  - component: {fileID: 1005589595}
   m_Layer: 0
   m_Name: EffectManager
   m_TagString: Untagged
@@ -1648,9 +1693,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1072383816092113423}
+  - {fileID: 2088220743}
+  - {fileID: 985373495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005589595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005589593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078cd197221cd6248977dbc7af731132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectManagerCtrl: {fileID: 0}
+  effectPrefabs: {fileID: 2088220742}
+  effectSpawner: {fileID: 985373494}
 --- !u!4 &1022604541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 123466243023093449, guid: 42771c6a3de952143a3ef71c24beeff9, type: 3}
@@ -1832,6 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c73dd005c343fd4396e2aeacafe8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleManagerCtrl: {fileID: 0}
   obstaclePrefabs: {fileID: 642279528}
   obstacleSpawner: {fileID: 558555986}
 --- !u!1 &1599535877
@@ -2498,6 +2560,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083237139}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2088220741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088220743}
+  - component: {fileID: 2088220742}
+  m_Layer: 0
+  m_Name: EffectPrefabs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2088220742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088220741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bae5cb9c731ff04788804f695c840fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectManagerCtrl: {fileID: 1005589595}
+  effects:
+  - {fileID: 1072383816092113424}
+--- !u!4 &2088220743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088220741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1072383816092113423}
+  m_Father: {fileID: 1005589594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115219331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2872,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1005589594}
+    m_TransformParent: {fileID: 2088220743}
     m_Modifications:
     - target: {fileID: 5925634807710475544, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
       propertyPath: m_Name
@@ -2786,15 +2896,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6259750979059906214, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6259750979059906214, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6259750979059906214, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6259750979059906214, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2818,6 +2928,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6259750979059906214, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
   m_PrefabInstance: {fileID: 1072383816092113422}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1072383816092113424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2549554560506370572, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
+  m_PrefabInstance: {fileID: 1072383816092113422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8137a96e2fcac254e8a88c9e94e99057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1109821496384952489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4471,10 +4592,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 642279527}
     m_Modifications:
-    - target: {fileID: 382087368112912255, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
-      propertyPath: m_Name
-      value: BarrelExplosion
-      objectReference: {fileID: 0}
     - target: {fileID: 3524934739391704844, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.08
@@ -4523,6 +4640,14 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 558555986}
+    - target: {fileID: 8907367483542131169, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
+      propertyPath: ExEffect
+      value: 
+      objectReference: {fileID: 2549554560506370572, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
+    - target: {fileID: 8907367483542131169, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
+      propertyPath: effectManagerCtrl
+      value: 
+      objectReference: {fileID: 1005589595}
     - target: {fileID: 8907367483542131169, guid: 64e8cc083023fd04383772f09742b22b, type: 3}
       propertyPath: obstacleManagerCtrl
       value: 

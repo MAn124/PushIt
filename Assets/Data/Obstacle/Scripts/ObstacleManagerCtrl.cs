@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleManagerCtrl : BaseMonoBehaviour
+public class ObstacleManagerCtrl : ObstacleManagerAbstract
 {
     [SerializeField] protected ObstaclePrefabs obstaclePrefabs;
     [SerializeField] protected ObstacleSpawner obstacleSpawner;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerPush : BaseMonoBehaviour
 {
-    [SerializeField] protected float pushForce = 10f;
+    [SerializeField] protected float pushForce = 20f;
     [SerializeField] protected float pushDistance = 2f;
     [SerializeField] protected PlayerCtrl playerCtrl;
     protected override void LoadComponent()
