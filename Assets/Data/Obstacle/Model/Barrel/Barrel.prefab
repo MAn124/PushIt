@@ -48,9 +48,12 @@ MonoBehaviour:
   barrelCtrl: {fileID: 8173020670120356911}
   obstacleManagerCtrl: {fileID: 0}
   effectManagerCtrl: {fileID: 0}
-  exForce: 700
-  exRadius: 5
   ExEffect: {fileID: 2549554560506370572, guid: 235db692b281a3a4687788ab40a188e9, type: 3}
+  soundManagerCtrl: {fileID: 0}
+  exSound: 100
+  exForce: 10
+  exRadius: 10
+  respawnTime: 5
 --- !u!65 &367062566090378376
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -6,13 +6,26 @@ using UnityEngine;
 public abstract class Spawner<T> : BaseMonoBehaviour where T : PoolObj
 {
     [SerializeField] protected List<T> inPoolObj;
-   
+    [SerializeField] protected PoolHolder poolHolder;
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadPool();
+    }
+    protected virtual void LoadPool()
+    {
+        if (this.poolHolder != null) return;
+        this.poolHolder= transform.GetComponentInChildren<PoolHolder>();
+    }
     public virtual T Spawn(T prefabs)
     {
         T newObj = this.GetObjFromPool(prefabs);
         if (newObj == null) {
         
          newObj = Instantiate(prefabs);
+        }
+        if (this.poolHolder != null) { 
+            newObj.transform.parent = this.poolHolder.transform;
         }
         return newObj;
     }
