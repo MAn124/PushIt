@@ -15,7 +15,7 @@ public class ObstacleSpawning : ObstacleManagerAbstract
     [Header("SpikeTrap")]
     [SerializeField] private SpikeTrapCtrl spikeTrapCtrl;
     [SerializeField] private List<Transform> spikeTrapSpawnPoints;
-    protected void Start()
+    protected override void Start()
     {
         this.Spawning();
     }

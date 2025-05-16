@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExplosionSoundCtrl : SoundCtrl
+public class ExplosionSoundCtrl : SFXCtrl
 {
 
 }

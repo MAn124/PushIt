@@ -20,7 +20,7 @@ public class PlayerMovement : BaseMonoBehaviour
         //this.IsMoving();
         this.IsJump();
     }
-    protected void Start()
+    protected override void Start()
     {
         camTransform = Camera.main.transform;
     }

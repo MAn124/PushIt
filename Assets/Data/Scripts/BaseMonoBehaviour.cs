@@ -6,6 +6,10 @@ public class BaseMonoBehaviour : MonoBehaviour
     {
         this.LoadComponent();
     }
+    protected virtual void Start()
+    {
+
+    }
     protected virtual void Reset()
     {
         this.LoadComponent();
@@ -14,5 +18,8 @@ public class BaseMonoBehaviour : MonoBehaviour
     {
 
     }
+    protected virtual void ResetValue()
+    {
 
+    }
 }

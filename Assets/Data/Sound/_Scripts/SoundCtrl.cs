@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public abstract class SoundCtrl : PoolObj
 {
     [SerializeField] protected AudioSource audioSource;
