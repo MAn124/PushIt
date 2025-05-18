@@ -6,18 +6,21 @@ public class PlayerMovement : BaseMonoBehaviour
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected bool isMoving = false;
     [SerializeField] protected float moveSpeed = 5f;
+    [SerializeField] protected float runSpeed = 10f;
+    [SerializeField] protected float jumpForce = 7f;
     [SerializeField] protected float pushMoveSpeed = 2.5f;
     protected bool isGrounded = true;
     protected Transform camTransform;
+    protected float currentMoveSpeed;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPlayerCtrl();
     }
-    protected void FixedUpdate()
+    protected void Update()
     {
         this.HandelMoving();
-        //this.IsMoving();
+        this.IsRunning();
         this.IsJump();
     }
     protected override void Start()
@@ -37,6 +40,7 @@ public class PlayerMovement : BaseMonoBehaviour
     }
     protected virtual void HandelMoving()
     {
+        this.IsRunning();
         Vector3 camForward = camTransform.forward;
         Vector3 camRight = camTransform.right;
 
@@ -52,18 +56,31 @@ public class PlayerMovement : BaseMonoBehaviour
         move = move.normalized;
         if (move == Vector3.zero) this.playerCtrl.Animator.SetBool("isMoving", false);       
         else this.playerCtrl.Animator.SetBool("isMoving", true);
-        float currentSpeed = playerCtrl.isPush ? pushMoveSpeed : moveSpeed;
-        playerCtrl.Rigidbody.MovePosition(transform.position + move * Time.fixedDeltaTime * currentSpeed);
+        //float currentSpeed = playerCtrl.isPush ? pushMoveSpeed : moveSpeed;
+        playerCtrl.Rigidbody.MovePosition(transform.position + move * Time.fixedDeltaTime * currentMoveSpeed);
         HandleRotation(move);
     }
     protected virtual void IsJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
-            playerCtrl.Rigidbody.AddForce(new Vector3(0f, 1f, 0f) * 1, ForceMode.Impulse);
+            playerCtrl.Rigidbody.AddForce(Vector3.up * this.jumpForce, ForceMode.Impulse);
             playerCtrl.Animator.SetBool("isJump", true);
             isGrounded = false;
+        } else
+        {
+            playerCtrl.Animator.SetBool("isJump", false);
+            isGrounded = true;
+
         }
+    }
+    protected virtual void IsRunning()
+    {
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
+        this.playerCtrl.Animator.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift));
+
+        
+        this.currentMoveSpeed = playerCtrl.isPush ? pushMoveSpeed : currentSpeed;
     }
     protected virtual void HandleRotation(Vector3 playerMove)
     {

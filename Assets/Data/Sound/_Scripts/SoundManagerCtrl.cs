@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
-public class SoundManagerCtrl : BaseMonoBehaviour
+public class SoundManagerCtrl : BaseSingleton<SoundManagerCtrl>
 {
     [SerializeField] protected SoundPrefabs soundPrefabs;
     [SerializeField] protected SoundSpawner soundSpawner;
@@ -31,8 +32,8 @@ public class SoundManagerCtrl : BaseMonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-        this.VolumeMusicUpdate();
-        this.VolumeSFXUpdate();
+        //this.VolumeMusicUpdate();
+        //this.VolumeSFXUpdate();
     }
     protected override void LoadComponent()
     {
@@ -87,7 +88,7 @@ public class SoundManagerCtrl : BaseMonoBehaviour
         if (this.listSFX.Contains(sfxCtrl)) return;
         this.listSFX.Add(sfxCtrl);
     }
-    protected virtual void ToggleMusic()
+    public virtual void ToggleMusic()
     {
         if (this.musicCtrl == null)
         {
@@ -97,18 +98,21 @@ public class SoundManagerCtrl : BaseMonoBehaviour
         bool status = this.musicCtrl.gameObject.activeSelf;
         this.musicCtrl.gameObject.SetActive(!status);
     }
-    protected virtual void VolumeMusicUpdate()
+    public virtual void VolumeMusicUpdate(float value)
     {
+        this.musicVolume = value;
        foreach(MusicCtrl musicCtrl in this.listMusic)
         {
             musicCtrl.AudioSource.volume = this.musicVolume;
         }
     }
-    protected virtual void VolumeSFXUpdate()
+    public virtual void VolumeSFXUpdate(float value)
     {
+        this.SFXVolume = value;
+
         foreach (SFXCtrl sfxCtrl in this.listSFX)
         {
-            sfxCtrl.AudioSource.volume = this.musicVolume;
+            sfxCtrl.AudioSource.volume = this.SFXVolume;
         }
     }
 }

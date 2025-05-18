@@ -6,7 +6,7 @@ public class StatueCtrl : BaseMonoBehaviour
     {
         if (other.CompareTag("Rock"))
         {
-            Debug.Log("hitting");
+            FinishUI.Instance.ShowUI();
         }   
     }
 }

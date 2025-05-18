@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class BtnMusicToggle : MonoBehaviour
+public class BtnMusicToggle : BtnAbstract
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void OnClick()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SoundManagerCtrl.Instance.ToggleMusic();
     }
 }

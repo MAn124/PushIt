@@ -13,6 +13,8 @@ public class StartUI : BaseSingleton<StartUI>
         this.isShow = true;
         this.gameObject.SetActive(this.isShow);
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public virtual void HideStartMenu()
     {
