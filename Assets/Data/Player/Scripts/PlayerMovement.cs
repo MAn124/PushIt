@@ -5,9 +5,9 @@ public class PlayerMovement : BaseMonoBehaviour
 {
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected bool isMoving = false;
-    [SerializeField] protected float moveSpeed = 5f;
-    [SerializeField] protected float runSpeed = 10f;
-    [SerializeField] protected float jumpForce = 7f;
+    [SerializeField] protected float moveSpeed = 3f;
+    [SerializeField] protected float runSpeed = 5f;
+    [SerializeField] protected float jumpForce = 50f;
     [SerializeField] protected float pushMoveSpeed = 2.5f;
     protected bool isGrounded = true;
     protected Transform camTransform;
@@ -57,7 +57,7 @@ public class PlayerMovement : BaseMonoBehaviour
         if (move == Vector3.zero) this.playerCtrl.Animator.SetBool("isMoving", false);       
         else this.playerCtrl.Animator.SetBool("isMoving", true);
         //float currentSpeed = playerCtrl.isPush ? pushMoveSpeed : moveSpeed;
-        playerCtrl.Rigidbody.MovePosition(transform.position + move * Time.fixedDeltaTime * currentMoveSpeed);
+        playerCtrl.Rigidbody.MovePosition(transform.position + move * Time.deltaTime * currentMoveSpeed);
         HandleRotation(move);
     }
     protected virtual void IsJump()
@@ -65,8 +65,8 @@ public class PlayerMovement : BaseMonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             playerCtrl.Rigidbody.AddForce(Vector3.up * this.jumpForce, ForceMode.Impulse);
-            playerCtrl.Animator.SetBool("isJump", true);
             isGrounded = false;
+            playerCtrl.Animator.SetBool("isJump", true);
         } else
         {
             playerCtrl.Animator.SetBool("isJump", false);
@@ -76,10 +76,15 @@ public class PlayerMovement : BaseMonoBehaviour
     }
     protected virtual void IsRunning()
     {
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
-        this.playerCtrl.Animator.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift));
+        bool isMoving = Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+        bool isHoldingShift = Input.GetKey(KeyCode.LeftShift);
+
+        bool isRun = isMoving && isHoldingShift;
+
+        this.playerCtrl.Animator.SetBool("isRunning", isRun);
 
         
+        float currentSpeed = isRun ? runSpeed : moveSpeed;
         this.currentMoveSpeed = playerCtrl.isPush ? pushMoveSpeed : currentSpeed;
     }
     protected virtual void HandleRotation(Vector3 playerMove)

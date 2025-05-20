@@ -12,7 +12,7 @@ public class BarrelExplosion : BaseMonoBehaviour
     [SerializeField] protected EffectCtrl ExEffect;
     [SerializeField] protected SoundManagerCtrl soundManagerCtrl;
     [SerializeField] protected SoundName exSound = SoundName.ExplosionSound;
-    [SerializeField] protected float exForce = 20f;
+    [SerializeField] protected float exForce = 200f;
     [SerializeField] protected float exRadius = 10f;
     [SerializeField] protected float respawnTime = 5f;
     protected override void LoadComponent()
@@ -32,7 +32,7 @@ public class BarrelExplosion : BaseMonoBehaviour
     public virtual void Explosion(Transform prefab)
     {
         this.obstacleManagerCtrl.ObstacleSpawner.Despawn(this.GetComponentInParent<ObstacleCtrl>());
-        Debug.Log("Hitting");     
+   
         this.effectManagerCtrl.EffectSpawner.Spawn(ExEffect, this.transform);
         this.SpawnSound();
         Vector3 explosionPos = this.transform.position;
@@ -42,7 +42,7 @@ public class BarrelExplosion : BaseMonoBehaviour
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null && rb != this.GetComponent<Rigidbody>())
             {
-                rb.AddExplosionForce(this.exForce, explosionPos, this.exRadius, 0.5f, ForceMode.Impulse);
+                rb.AddExplosionForce(this.exForce, explosionPos, this.exRadius, 1f, ForceMode.Impulse);
             }
         }
         CoroutineRunner.Instance.StartCoroutine(Respawn(barrelCtrl,5f));     
